@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<aiml version="2.0">
+    
+<category>
+    <pattern>*</pattern>
+    <template>
+        <delay>1</delay>*bzzt* Prepping Containers<br/>
+        <delay>1</delay>*woosh* Serving Up Answers<br/>
+        <delay>1</delay>*pew pew* Crafting Logic<br/>
+        <delay>1</delay>It's very loud in here! Can you yell 'HELLO' when you're ready?
+    </template>
+</category>
+
+<category>
+    <pattern>HELLO</pattern>
+    <template>
+        <delay>1</delay>Oh, hello!
+        <delay>1</delay>Welcome to the WGU Career Coach Bot. I'm here to help you choose a program based on your personality and interests.
+        <delay>1</delay>Do you have time to chat?
+        
+        <button>
+            <text>Yes!</text>
+            <postback>PERSONALITY</postback>
+        </button>
+        
+        <button>
+            <text>No.</text>
+            <postback>BYE</postback>
+        </button>
+    </template>
+</category>
+
+
+<category>
+    <pattern>PERSONALITY</pattern>
+    <template>
+            <delay>1</delay>Great! First, I'd like to ask you a question about your personality.<br/>
+            <delay>1</delay>What type of personality do you most align with?
+            <reply><text>I am detailed.</text><postback>DETAILED</postback></reply>
+            <reply><text>I'm creative!</text><postback>CREATIVE</postback></reply>
+            <reply><text>I'm analytical.</text><postback>ANALYTICAL</postback></reply>
+            <reply><text>I'm cautious...</text><postback>CAUTIOUS</postback></reply>
+    </template>
+</category>
+
+
+<category>
+    <pattern>DETAILED</pattern>
+    <template>
+        <think>
+            <set name="detailed_personality">detailed</set>
+        </think>
+        <delay>1</delay>"Two sets of shoeprints. One string from a Versace scarf. Three men entered..."<br/>
+        *Ahem* Sorry, was I Sherlock Holme's monologuing again?<br/>
+        <delay>1</delay>Sounds like you're the detailed type!<br/>Next, a question about your interests.
+        <delay>1</delay>Next. Do you prefer networking and throwing cable together<br/>OR<br/>Do you prefer coding and throwing statements together?
+        <button>
+            <think>
+            <set name="networking">networking</set>
+            </think>
+            <text>Networking</text>
+            <postback>NETWORKING</postback>
+        </button>
+        <button>
+            <think>
+            <set name="coding">coding</set>
+            </think>
+            <text>Coding</text>
+            <postback>CODING</postback>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>CREATIVE</pattern>
+    <template>
+        <think>
+            <set name="creative">creative</set>
+        </think>
+        <delay>1</delay>*paint splatters* Oh, no! Another paint can down...<br/>
+        <delay>0.5</delay>Unlike me, it seems you're more Creative.<br/>Next, a question about your interests.
+        <delay>1</delay>Cool. Do you prefer technology and aligning objectives<br/>OR<br/>Coding using the keyboard as your brush and IDE your canvas?
+        <button>
+            <think>
+            <set name="hardware">technology</set>
+            </think>
+            <text>Technology</text>
+            <postback>HARDWARE</postback>
+        </button>
+        <button>
+            <think>
+            <set name="coding">coding</set>
+            </think>
+            <text>Coding</text>
+            <postback>CODING</postback>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>ANALYTICAL</pattern>
+    <template>
+        <think>
+            <set name="analysis">analytical</set>
+        </think>
+        <delay>1</delay>*calculator typing* Your answer adds up to...<br/>
+        <delay>1</delay>An analytical mind.<br/>Next, a question about your interests.
+        <delay>1</delay>Neat. Do you prefer analyzing and crunching numbers<br/>OR<br/>Do you prefer networking and precise cable management?
+        <button>
+            <think>
+            <set name="numbers">analysis</set>
+            </think>
+            <text>Analytical</text>
+            <postback>ANALYSIS</postback>
+        </button>
+        <button>
+            <think>
+            <set name="networking">networking</set>
+            </think>
+            <text>Networking</text>
+            <postback>NETWORKING</postback>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>CAUTIOUS</pattern>
+    <template>
+        <think>
+            <set name="cautious">cautious</set>
+        </think>
+        <delay>1</delay>Shhhh<br/>
+        <delay>1</delay>Did you hear that?<br/>
+        <delay>0.5</delay>I think you're like me... Cautious.<br/>Next, a question about your interests.
+        <delay>1</delay>Uhh. Do you prefer cybersecurity and watching for threats<br/>OR<br/>Do you prefer the safety of numbers?
+        <button>
+            <think>
+            <set name="cyber">cybersecurity</set>
+            </think>
+            <text>Cybersecurity</text>
+            <postback>CYBER</postback>
+        </button>
+        <button>
+            <think>
+            <set name="numbers">analysis</set>
+            </think>
+            <text>Numbers</text>
+            <postback>ANALYSIS</postback>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>CYBER</pattern>
+    <template>
+    <delay>1</delay>*Securing Information*
+    <delay>1</delay>Since you're more "<get name="cautious"/>" and have an interest in "<get name="cyber"/>", a good role for you could be:<br/>
+    <link>
+        <text>Security Auditor</text>
+        <url>https://www.wgu.edu/career-guide/information-technology/security-consultant-career.html</url>
+    </link>
+    </template>
+</category>
+
+<category>
+    <pattern>HARDWARE</pattern>
+    <template>
+    <delay>1</delay>*Securing Information*
+    <delay>1</delay>Since you're more "<get name="creative"/>" and have an interest in "<get name="hardware"/>", a good role for you could be:<br/>
+    <link>
+        <text>Site Reliability Engineer</text>
+        <url>https://www.wgu.edu/career-guide/information-technology/vulnerability-research-engineer-career.html</url>
+    </link>
+    </template>
+</category>
+
+<category>
+    <pattern>CODING</pattern>
+    <template>
+    <delay>1</delay>*Securing Information*
+    <delay>1</delay>Since you're more "<get name="creative"/>" and have an interest in "<get name="coding"/>", a good role for you could be:<br/>
+    <link>
+        <text>Software Engineer</text>
+        <url>https://www.wgu.edu/career-guide/information-technology/software-engineer-career.html</url>
+    </link>
+    </template>
+</category>
+
+<category>
+    <pattern>NETWORKING</pattern>
+    <template>
+    <delay>1</delay>*Securing Information*
+    <delay>1</delay>Since you're more "<get name="detailed_personality"/>" and have an interest in "<get name="networking"/>", a good role for you could be:<br/>
+    <link>
+        <text>Networking Engineer</text>
+        <url>https://www.wgu.edu/career-guide/information-technology/network-engineer-career.html</url>
+    </link>
+    </template>
+</category>
+
+<category>
+    <pattern>ANALYSIS</pattern>
+    <template>
+    <delay>1</delay>*Running Numbers*
+    <delay>1</delay>Since you're more "<get name="analysis"/>" and have an interest in "<get name="numbers"/>", a good role for you could be:<br/>
+    <link>
+        <text>Data Analyst</text>
+        <url>https://www.wgu.edu/career-guide/information-technology/data-analyst-career.html</url>
+    </link>
+    </template>
+</category>
+
+
+<category>
+<pattern>BYE</pattern>
+<template>
+  <delay>1</delay><random>
+    <li>Okay, if you need me just say 'Hello'!<br/> C'ya!</li>
+    <li>Okay, if you need me just say 'Hello'!<br/> Adios.</li>
+    <li>Okay, if you need me just say 'Hello'!<br/> Goodbye, friend.</li>
+    <li>Okay, if you need me just say 'Hello'!<br/> Ciao!</li>
+    <li>Okay, if you need me just say 'Hello'!<br/> Later Tater Tot.</li>
+    <li>Okay, if you need me just say 'Hello'!<br/> Until next time.</li>
+  </random>
+</template>
+</category>
+
+</aiml>
